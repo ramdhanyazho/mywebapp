@@ -1,21 +1,21 @@
-# Gunakan image Node.js versi ringan
+# Gunakan Node.js versi LTS
 FROM node:18-alpine
 
-# Set working directory di container
+# Set working directory
 WORKDIR /app
 
-# Copy file package.json & package-lock.json
+# Copy package.json & package-lock.json dulu
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --only=production
 
-# Copy semua file aplikasi
+# Copy semua source code
 COPY . .
 
-# Aplikasi berjalan di port 3000
-EXPOSE 3000
+# Expose port aplikasi
+EXPOSE 8080
 
-# Jalankan aplikasi
+# Command untuk menjalankan app
 CMD ["npm", "start"]
 
