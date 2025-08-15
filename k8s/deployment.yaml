@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywebapp
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mywebapp
+  template:
+    metadata:
+      labels:
+        app: mywebapp
+    spec:
+      containers:
+      - name: mywebapp
+        image: docker.io/username/mywebapp:latest # Ganti dengan image kamu
+        ports:
+        - containerPort: 3000
+
